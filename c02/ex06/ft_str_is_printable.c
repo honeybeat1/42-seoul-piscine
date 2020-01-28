@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 00:03:00 by dachung           #+#    #+#             */
-/*   Updated: 2020/01/28 21:34:48 by dachung          ###   ########.fr       */
+/*   Created: 2020/01/28 23:00:19 by dachung           #+#    #+#             */
+/*   Updated: 2020/01/28 23:45:21 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_str_is_printable(char *str)
 {
 	int i;
 
 	i = 0;
-	while (src[i] != 0)
+	if (str[0] == 0)
+		return (1);
+	while (str[i] != 0)
 	{
-		dest[i] = src[i];
-		i++;
+		if (31 < str[i] < 127)
+			i++;
+		else
+			return (0);
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (1);
 }

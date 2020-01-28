@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 00:03:00 by dachung           #+#    #+#             */
-/*   Updated: 2020/01/28 21:34:48 by dachung          ###   ########.fr       */
+/*   Created: 2020/01/28 23:46:20 by dachung           #+#    #+#             */
+/*   Updated: 2020/01/29 00:25:06 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strlowcase(char *str)
 {
 	int i;
 
 	i = 0;
-	while (src[i] != 0)
+	while (str[i] != 0)
 	{
-		dest[i] = src[i];
+		if ('A' <= str[i] && str[i] <= 'Z')
+			str[i] += 32;
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (str);
 }

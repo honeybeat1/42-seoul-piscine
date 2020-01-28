@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 00:03:00 by dachung           #+#    #+#             */
-/*   Updated: 2020/01/28 21:34:48 by dachung          ###   ########.fr       */
+/*   Created: 2020/01/29 01:19:49 by dachung           #+#    #+#             */
+/*   Updated: 2020/01/29 02:56:14 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
-	while (src[i] != 0)
+	while (i < size - 1)
 	{
-		dest[i] = src[i];
+		if (src[i] == '\0')
+			break ;
+		else
+			dest[i] = src[i];
 		i++;
 	}
 	dest[i] = '\0';
-	return (dest);
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }

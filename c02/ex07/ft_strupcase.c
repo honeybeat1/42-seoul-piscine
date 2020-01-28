@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 00:03:00 by dachung           #+#    #+#             */
-/*   Updated: 2020/01/28 21:34:48 by dachung          ###   ########.fr       */
+/*   Created: 2020/01/28 23:20:30 by dachung           #+#    #+#             */
+/*   Updated: 2020/01/29 00:25:55 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strupcase(char *str)
 {
 	int i;
 
 	i = 0;
-	while (src[i] != 0)
+	while (str[i] != 0)
 	{
-		dest[i] = src[i];
+		if (97 <= str[i] && str[i] <= 122)
+			str[i] -= 32;
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (str);
 }
