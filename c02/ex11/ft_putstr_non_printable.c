@@ -1,28 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 23:00:19 by dachung           #+#    #+#             */
-/*   Updated: 2020/01/29 19:11:27 by dachung          ###   ########.fr       */
+/*   Created: 2020/01/29 14:45:29 by dachung           #+#    #+#             */
+/*   Updated: 2020/01/29 18:10:14 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_printable(char *str)
+#include <unistd.h>
+
+void	ft_putchar(char c)
 {
-	int i;
+	write(1, &c, 1);
+}
+
+void	dec_to_hex(char c)
+{
+	int		r;
+	int		q;
+
+	ft_putchar('\\');
+	q = c / 16;
+	r = c % 16;
+	ft_putchar(q + '0');
+	if (r < 10)
+		c = 48 + r;
+	if (r >= 10)
+		c = 87 + r;
+	ft_putchar(c);
+}
+
+void	ft_putstr_non_printable(char *str)
+{
+	int	i;
 
 	i = 0;
-	if (str[0] == 0)
-		return (1);
 	while (str[i] != 0)
 	{
 		if (31 < str[i] && str[i] < 127)
-			i++;
+			ft_putchar(str[i]);
 		else
-			return (0);
+			dec_to_hex(str[i]);
+		i++;
 	}
-	return (1);
 }
