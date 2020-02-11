@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/30 16:50:55 by dachung           #+#    #+#             */
-/*   Updated: 2020/02/02 00:27:45 by dachung          ###   ########.fr       */
+/*   Created: 2020/01/30 12:31:16 by dachung           #+#    #+#             */
+/*   Updated: 2020/01/31 12:39:50 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+char	*ft_strcat(char *dest, char *src)
 {
-	int i;
-	int j;
-	int m;
+	int	i;
+	int	j;
 
 	i = 0;
-	if (to_find[0] == 0)
-		return (str);
-	while (str[i] != 0)
+	j = 0;
+	while (dest[j] != 0)
+		j++;
+	while (src[i] != 0)
 	{
-		if (str[i] == to_find[0])
-		{
-			m = i;
-			j = 0;
-			while ((to_find[j] != 0) && (str[m] != 0))
-			{
-				if (to_find[j] != str[m++])
-					break ;
-				j++;
-			}
-			if (to_find[j] == 0)
-				return (str + i);
-		}
+		dest[j] = src[i];
 		i++;
+		j++;
 	}
-	return (0);
+	dest[j] = '\0';
+	return (dest);
 }

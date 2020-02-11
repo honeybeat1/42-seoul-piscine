@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/30 16:50:55 by dachung           #+#    #+#             */
-/*   Updated: 2020/02/02 00:27:45 by dachung          ###   ########.fr       */
+/*   Created: 2020/02/02 21:09:24 by dachung           #+#    #+#             */
+/*   Updated: 2020/02/09 12:10:53 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+int		ft_atoi(char *str)
 {
 	int i;
-	int j;
-	int m;
+	int r;
+	int sign;
 
 	i = 0;
-	if (to_find[0] == 0)
-		return (str);
+	sign = 1;
+	r = 0;
 	while (str[i] != 0)
 	{
-		if (str[i] == to_find[0])
+		while (str[i] == 32 || (9 <= str[i] && str[i] <= 13))
+			i++;
+		if (str[i] == '-' || str[i] == '+')
+			if (str[i++] == '-')
+				sign *= -1;
+		while ('0' <= str[i] && str[i] <= '9')
 		{
-			m = i;
-			j = 0;
-			while ((to_find[j] != 0) && (str[m] != 0))
-			{
-				if (to_find[j] != str[m++])
-					break ;
-				j++;
-			}
-			if (to_find[j] == 0)
-				return (str + i);
+			r = r * 10 + str[i++] - '0';
+			if (!('0' <= str[i] && str[i] <= '9'))
+				return (sign * r);
 		}
-		i++;
+		return (0);
 	}
 	return (0);
 }

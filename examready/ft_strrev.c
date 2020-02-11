@@ -1,40 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/30 16:50:55 by dachung           #+#    #+#             */
-/*   Updated: 2020/02/02 00:27:45 by dachung          ###   ########.fr       */
+/*   Created: 2020/02/07 14:41:04 by dachung           #+#    #+#             */
+/*   Updated: 2020/02/07 15:02:58 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+void	ft_swap(char *a, char *b)
 {
-	int i;
-	int j;
-	int m;
+	char temp;
 
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+char	*ft_strrev(char *str)
+{
+	int len;
+	int i;
+
+	len = 0;
+	while (str[len] != 0)
+		len++;
 	i = 0;
-	if (to_find[0] == 0)
-		return (str);
-	while (str[i] != 0)
+	while (i < len / 2)
 	{
-		if (str[i] == to_find[0])
-		{
-			m = i;
-			j = 0;
-			while ((to_find[j] != 0) && (str[m] != 0))
-			{
-				if (to_find[j] != str[m++])
-					break ;
-				j++;
-			}
-			if (to_find[j] == 0)
-				return (str + i);
-		}
-		i++;
+		ft_swap(&str[i], &str[len - 1 - i]);
+		i++;	
 	}
-	return (0);
+	return (str);
+}
+#include <stdio.h>
+int		main(void)
+{
+	char str[] = "abcde";
+	printf("%s", ft_strrev(str));
 }

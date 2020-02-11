@@ -6,7 +6,7 @@
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 16:50:55 by dachung           #+#    #+#             */
-/*   Updated: 2020/01/31 00:25:45 by dachung          ###   ########.fr       */
+/*   Updated: 2020/02/01 01:07:34 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strstr(char *str, char *to_find)
 		{
 			m = i;
 			j = 0;
-			while (to_find[j] != 0)
+			while ((to_find[j] != 0) && (str[m] != 0))
 			{
 				if (to_find[j++] != str[m++])
 					break ;

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2_ft_strncat.c                                     :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dachung <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 00:19:19 by dachung           #+#    #+#             */
-/*   Updated: 2020/02/01 00:30:55 by dachung          ###   ########.fr       */
+/*   Created: 2020/02/07 14:10:52 by dachung           #+#    #+#             */
+/*   Updated: 2020/02/07 14:36:05 by dachung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, chat *src, unsigned int nb)
+
+unsigned char swap_bits(unsigned char octet)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned char result;
 
-	i = 0;
-	j = 0;
-	while (*dest)
-		dest++;
-	while (*src)
-	{
-		*dest = *src;
-		dest++;
-		src++;
-	}
+	result = 0;
+	result += octet << 4;
+	result += octet >> 4;
+	return (result);
+}
 
+#include <stdio.h>
+
+int		main(void)
+{
+	printf("%d\n", (int) swap_bits(65)); 
 }
